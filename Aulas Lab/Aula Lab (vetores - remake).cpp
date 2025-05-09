@@ -14,7 +14,7 @@ int main(){
 		
 	}
 	
-	for(int a=0;a<5;a++){
+	/*for(int a=0;a<5;a++){
 		
 		for(int b=0;b<5;b++){
 			
@@ -26,7 +26,7 @@ int main(){
 			}
 			
 		}
-	}
+	}*/
 
 	
 	while (i <= 10) {
@@ -34,6 +34,20 @@ int main(){
 		m++;
 		i++;
 		y++;
+	}
+	
+	for(int a=0;a<10;a++){
+		
+		for(int b=0;b<10;b++){
+			
+			if (n[b]<n[b+1]){
+				
+				x = n[b];
+				n[b]=n[b+1];
+				n[b+1]=x;
+			}
+			
+		}
 	}
 	
 	i = 0;
