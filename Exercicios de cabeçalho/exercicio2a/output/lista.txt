@@ -1,0 +1,4 @@
+
+Nome = Gabriel
+Matricula = 23
+Nota = 60
