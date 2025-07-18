@@ -1,0 +1,1 @@
+os arquivos .h sao importantes para que seja possivel um desenvolvimento idependente e uma maior organização do código, já que não e necessário alterar o "main.c"; Costuma-se ser usado para criar declarações de funções, structs, constantes, etc.

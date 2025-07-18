@@ -1,0 +1,2 @@
+A funcao de ferror eh a de verificar se houve algum erro ao abrir o arquivo. Caso não tenha ocorrido um erro, ele retornará 0, caso retorne outro numero, deve ter ocorrido algum erro ao abrir o aquivo.
+

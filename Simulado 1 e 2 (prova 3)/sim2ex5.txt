@@ -1,0 +1,1 @@
+O fgets consegue salvar strings respeitando o limite do vetor alem de conseguir ler depois do primeiro espaco, enquanto que o scanf e limitado no quesito de, não conseguir ler o que foi digitado apos o espaco, e alem disso, ele pode dar erro de buffer

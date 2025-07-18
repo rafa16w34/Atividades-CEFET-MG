@@ -14,9 +14,11 @@ int main(){
 
     char x[MAX];
 
-    for (int j =i; j >0;j--){
+    for (int j = 0; j <i; j++){
+
     fgets(x,MAX,file);
     printf("\nx:%s",x);
+
     }
 
     fclose(file);

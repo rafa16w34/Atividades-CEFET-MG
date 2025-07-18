@@ -12,20 +12,28 @@ typedef struct livro{
 
 int main(){
 
-    book t[MAX],a[MAX],y;
+    book book[3];
 
     for(int i = 0; i<3; i++){
 
-        printf("Digite o nome do livro:\n");
-        fgets(t[MAX].titulo,MAX,stdin);
+        printf("\nDigite o nome do livro:\n");
+        fgets(book[i].titulo,MAX,stdin);
 
         printf("\nDigite o nome do autor:\n");
-        fgets(a[MAX].autor,MAX,stdin);
+        fgets(book[i].autor,MAX,stdin);
         
         printf("\nDigite o ano de publicacao:\n");
-        scanf("%d",&y.ano);
+        scanf("%d",&book[i].ano);
+        while (getchar() != '\n');
 
-        printf("Nome do livro:%s\nNome do autor:%s\nAno de publications:%d\n\n",t[MAX].titulo,a[MAX].autor,y.ano);
+        
+        
+    }
+
+    for(int i = 0; i<3; i++){
+
+        printf("Nome do livro:%s\nNome do autor:%s\nAno de publications:%d\n\n",book[i].titulo,book[i].autor,book[i].ano);
+
     }
 
     return 0;
