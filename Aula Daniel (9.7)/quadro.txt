@@ -1,0 +1,11 @@
+Exercícios:
+
+Aluno-> struct
+int matricula, n1,n2,n3,n4;
+double media;
+
+1 - Crie uma lista estática (vetor) contendo 5 alunos;
+
+2 - Copie para uma lista dinâmica (ponteiros) contendo os alunos da lista estática ordenados pela média das suas notas
+
+3 - Imprima os conteúdos de ambas as listas 

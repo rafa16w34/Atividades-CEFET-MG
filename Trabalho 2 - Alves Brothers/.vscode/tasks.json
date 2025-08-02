@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "estrutura.c",
+        "main.c",
+        "-o",
+        "trabalho.exe"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Compila os arquivos e gera o executável trabalho.exe"
+    },
+    {
+      "label": "Executar",
+      "type": "shell",
+      "command": "trabalho.exe",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "Compilar",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}
