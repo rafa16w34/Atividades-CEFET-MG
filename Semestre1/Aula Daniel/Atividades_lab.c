@@ -577,11 +577,180 @@ void questao1(){
 
 }
 
-void questao2(){}
+void questao2(){
 
-void questao3(){}
+	double x = 0.0, resultado = 0.0, e = 0.0, num = 2.0;
 
-void questao4(){}
+	printf("Defina um valor para x\n");
+	scanf("%lf",&x);
+
+	resultado = exp(x);//calcula o exponencial natural do numero que foi associado a x
+
+
+
+
+	//Calculo sem o uso do math.h 
+
+	e = 1+x; //e vale o valor que vem apos o valor digitado pelo usuário
+
+
+	while (resultado > e){
+		
+		e += (pow(x,num))/(tgamma(num));
+        num ++;
+		
+}
+	
+	printf("\nO valor pelo meu calculo eh:%.4lf",e);
+	
+	printf("\n\nO resultado pela biblioteca eh:%lf\nO resultado pelos meus calculos eh:%lf\nA diferenca entre os resultados eh:%lf",resultado,e,(resultado - e));
+	
+
+}
+
+void questao3(){
+
+	long long int x = 0,resultado = 0 ;
+	printf("Digite um numero com 9 digitos\n");
+	scanf("%lld",&x);
+	
+	if ((x < 99999999) || (x > 1000000000)){
+	printf("\nNumero invalido");
+	}else{
+	//100.000.000
+		
+	resultado += (2* (x%10));
+	resultado += (3* (x/10 %10)); 
+	resultado += (4* (x/100 %10));
+	resultado += (5* (x/1000 %10));
+	resultado += (6* (x/10000 %10));
+	resultado += (7* (x/100000 %10));
+	resultado += (8* (x/1000000 %10));
+	resultado += (9* (x/10000000 %10));
+	resultado += (10* (x/100000000 %10));
+
+	printf("\nA soma dos produtos eh:%lld\n",resultado);
+	
+	//Letra B
+	
+	if (resultado%11 < 2){
+		
+		printf("\nA dezena do numero verificador eh 0\n");
+		x *= 10;
+	}else{
+		printf("\nA dezena do numero verificador eh:%lld\n",(11-(resultado%11)));
+		x = x * 10 + (11-(resultado%11));
+	}
+	printf("\nO CPF eh:%lld\n",x);
+	
+	//Letra C
+	resultado = 0;
+	
+	resultado += (2* (x%10));
+	resultado += (3* (x/10 %10)); 
+	resultado += (4* (x/100 %10));
+	resultado += (5* (x/1000 %10));
+	resultado += (6* (x/10000 %10));
+	resultado += (7* (x/100000 %10));
+	resultado += (8* (x/1000000 %10));
+	resultado += (9* (x/10000000 %10));
+	resultado += (10* (x/100000000 %10));
+	resultado += (11* (x/1000000000 %10));
+	
+	printf("\nA soma dos produtos eh:%lld\n",resultado);
+		
+	//Letra D	
+	
+	
+	if (resultado%11 < 2){
+		printf("\nA dezena do numero verificador eh 0\n");
+		x *= 10;
+	}else{
+		printf("\nA dezena do numero verificador eh:%lld\n",(11-(resultado%11)));
+		x = (x*10)+ (11-(resultado%11));
+	}	
+	
+	
+	printf("\nO CPF eh:%lld\n",x);
+	}
+
+}
+
+void questao4(){
+
+long long int x,resultado = 0;
+	printf("Digite um numero com 12 digitos\n");	//112223330001
+	scanf("%lld",&x);
+	
+	if ((x < 100000000000 || x > 999999999999)){
+	printf("\nNumero invalido");
+	}else{
+	//100.000.000
+		
+	//585771140001
+	resultado += (2* (x%10));
+	resultado += (3* (x/10 %10));
+	resultado += (4* (x/100 %10));
+	resultado += (5* (x/1000 %10));
+	resultado += (6* (x/10000 %10));
+	resultado += (7* (x/100000 %10));
+	resultado += (8* (x/1000000 %10));
+	resultado += (9* (x/10000000 %10));
+	resultado += (2* (x/100000000 %10));
+	resultado += (3* (x/1000000000 %10));
+	resultado += (4* (x/10000000000 %10));
+	resultado += (5* (x/100000000000 %10));
+
+	printf("\nA soma dos produtos eh:%lld\n",resultado);
+	
+	//Letra B
+	
+	if (resultado%11 < 2){
+		
+		printf("\nA dezena do numero verificador eh 0\n");
+		x *= 10;
+	}else{
+		printf("\nA dezena do numero verificador eh:%lld\n",(11-(resultado%11)));
+		x = x * 10 + (11-(resultado%11));
+	}
+	printf("\nO CNPJ eh:%lld\n",x);
+	
+	//Letra C
+	resultado = 0;
+	
+	resultado += (2* (x%10));
+	resultado += (3* (x/10 %10));
+	resultado += (4* (x/100 %10));
+	resultado += (5* (x/1000 %10));
+	resultado += (6* (x/10000 %10));
+	resultado += (7* (x/100000 %10));
+	resultado += (8* (x/1000000 %10));
+	resultado += (9* (x/10000000 %10));
+	resultado += (2* (x/100000000 %10));
+	resultado += (3* (x/1000000000 %10));
+	resultado += (4* (x/10000000000 %10));
+	resultado += (5* (x/100000000000 %10));
+	resultado += (6* (x/1000000000000 %10));
+	
+	printf("\nA soma dos produtos eh:%lld\n",resultado);
+		
+	//Letra D	
+		
+	if (resultado%11 < 2){
+		
+		printf("\nA dezena do numero verificador eh 0\n");
+		x *= 10;
+	}else{
+		printf("\nA dezena do numero verificador eh:%lld\n",(11-(resultado%11)));
+		x = x * 10 + (11-(resultado%11));
+	}	
+	
+	
+	printf("\nO CNPJ eh:%lld\n",x); //11222333000181 erro
+	}
+	
+
+}
 
 void lista1(){
 
@@ -595,12 +764,20 @@ void lista1(){
         switch(s){
 
             case 1:
+			questao1();
+			break;
 
             case 2:
+			questao2();
+			break;
 
             case 3:
+			questao3();
+			break;
 
             case 4:
+			questao4();
+			break;
 
             case 0:
             printf("\nRetornando ao menu..\n");
@@ -613,8 +790,6 @@ void lista1(){
     }
 
 }
-
-void aula(){}
 
 
 int main(){
