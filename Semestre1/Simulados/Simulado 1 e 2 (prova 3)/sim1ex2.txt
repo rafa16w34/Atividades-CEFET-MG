@@ -1,1 +1,0 @@
-Servem para não ocorrer problemas de inclusão múltipla. O primeiro (#ifndef) serve para não criar duas bibliotecas, verificando se a que voce ira criar ja foi definida antes; o segundo (#define) serve para definir constantes e o terceiro (#endif) serve para fechar a biblioteca, guardando a inclusao.
