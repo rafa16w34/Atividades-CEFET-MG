@@ -1,1 +1,0 @@
-Uma Struct funciona como um pacote de varíaveis de vários tipos, que podem ser agrupadas em um grupo que cria um novo tipo de variavel. Util para criar uma struct chamada cadastrado que contem uma string de nome, um inteiro de idade, e um inteiro de cpf, e voce pode criar variaveis no main no tipo cadastro para salvar esses dados.

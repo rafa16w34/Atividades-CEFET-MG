@@ -1,1 +1,0 @@
-A modularização, ou seja, separar o código em vários arquivos, traz várias vantagens, pois deixa mais facil a manutenção do código, além de ser mais prático de dividi-lo para desenvolve-lo com uma equipe, por exemplo
