@@ -253,6 +253,7 @@ void simulado3_1(){
 	int q = 99;
 
 	printf("\nEscolha uma das questoes do simulado:\n1- Questao 1\n2- Questao 2\n3- Questao 3 e 4\n4- Questao 5\n5- Questao 6 e 7\n6- Questao 8\n7- Questao 9\n8- Questao 10\n0- Sair\n");
+    scanf("%d",&q);
 
 	while(q!=99){
 
@@ -308,7 +309,53 @@ void simulado3_2(){
 
 	int q =99;
 
-	printf("\nSelecione uma das questoes:\n1- Questao 1\n2- Questao 2,3 e 4\n\n");
+	printf("\nSelecione uma das questoes:\n1- Questao 1\n2- Questao 2,3 e 4\n3- Questao 5\n4- Questao 6\n5- Questao 7\n6- Questao 8\n7- Questao 9\n8- Questao 10\n0- Sair\n");
+    scanf("%d",&q);
+
+    while(q!=0){
+
+        switch(q){
+
+            case 1:
+            printf("\nR: Uma Struct funciona como um pacote de varíaveis de vários tipos, que podem ser agrupadas em um grupo que cria um novo tipo de variavel. Util para criar uma struct chamada cadastrado que contem uma string de nome, um inteiro de idade, e um inteiro de cpf, e voce pode criar variaveis no main no tipo cadastro para salvar esses dados.\n");
+            break;
+
+            case 2:
+
+            break;
+
+            case 3:
+            printf("\nR: O fgets consegue salvar strings respeitando o limite do vetor alem de conseguir ler depois do primeiro espaco, enquanto que o scanf e limitado no quesito de, não conseguir ler o que foi digitado apos o espaco, e alem disso, ele pode dar erro de buffer\n");
+            break;
+
+            case 4:
+            break;
+
+            case 5:
+            printf("\nR: A funcao de ferror eh a de verificar se houve algum erro ao abrir o arquivo. Caso não tenha ocorrido um erro, ele retornará 0, caso retorne outro numero, deve ter ocorrido algum erro ao abrir o aquivo.\n");
+            break;
+
+            case 6:
+            printf("\nR: A modularização, ou seja, separar o código em vários arquivos, traz várias vantagens, pois deixa mais facil a manutenção do código, além de ser mais prático de dividi-lo para desenvolve-lo com uma equipe, por exemplo\n");
+            break;
+
+            case 7:
+            break;
+
+            case 8:
+            break;
+
+            case 0:
+            printf("\nA gente se ve!\n");
+            break;
+
+            default:
+            printf("\nDigite uma opcao valida!\n");
+            break;
+
+        }
+
+    }
 
 }
 
@@ -507,6 +554,8 @@ void simulado3_3(){
 	int q = 99;
 
 	printf("\nDigite qual questao voce gostaria de ver:\n4- Questao 4\n5- Questao 5\n8- Questao 8\n9- Questao 9\n10- Questao 10\n0- Sair\n");
+    scanf("%d",&q);
+
 	while(q!= 0){
 		switch(q){
 
