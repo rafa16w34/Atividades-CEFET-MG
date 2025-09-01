@@ -1,3 +1,5 @@
+//Proposta de fazer um código que calcule o fatorial ate de 3 com um codigo imperativo e outro com objetos. (So que eu não sei programar em objetos XD)
+
 #include <stdio.h>
 #include <stdlib.h>
 
