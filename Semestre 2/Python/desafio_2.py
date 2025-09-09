@@ -9,7 +9,6 @@ validar_idade = idade.isnumeric()
 admin_na_senha = senha.startswith('admin')
 
 nome = nome.lower()
-print(nome)
 
 if (nome.startswith('a') == True or nome.startswith('e') == True  or nome.startswith('i') == True  or nome.startswith('o') == True  or nome.startswith('u') == True ):
     vogal_nome = True
@@ -40,6 +39,8 @@ if (validar_idade == True):
 
         print(f"Idade : {idade_bool}")
 
+
+        #Senha inteira e somado + 10
         senha_int = senha.isnumeric()
 
         if(senha_int == True):
