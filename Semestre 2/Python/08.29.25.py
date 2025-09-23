@@ -95,9 +95,9 @@ print(texto.find('P'))
 # .len('texto')
 
 texto = 'Python'
-print(texto.index('P'))
-print(texto.index('p'))
-print(len(texto))
+#print(texto.index('P'))
+#print(texto.index('p'))
+#print(len(texto))
 
 # .split()
 # .partition('sep')
