@@ -66,25 +66,26 @@ def contar_bombas_vizinhas(x, y, largura, altura, posicoes_minas):
     return total_bombas_vizinhas
 
 
-while True:
+while True: #Vai repetir esse loop ao até o usuário perder ou ganhar no jogo 
     
-    minas_achadas = 0
+    minas_achadas = 0   #Variável que armazena quantas bombas foram marcadas pelo usuário
 
-    for i in posicoes_minas:
+    for i in posicoes_minas:    #Transforma os números da aleatórios da lista de bombas em posições para a matriz do campo minado
         linha = i// largura
         coluna = i % largura
 
-        if colunas[linha][coluna] == 'M':
-            minas_achadas += 1
+        if colunas[linha][coluna] == 'M':#Verifica se a posição de alguma bomba está marcada com 'M' ou seja, se o usário marcou ela como suspeita
+            minas_achadas += 1 #Caso tenha ele acrescenta em 1 na variável de minas achadas 
 
-    if minas_achadas == minas:
+    if minas_achadas == minas:#Se o usuário achar todas as minas o jogo acaba e ele vence
         print('Fim de Jogo. Você Venceu')
         break
 
-    else:
+    else:#Caso ele não tenha achado todas as minas, então o jogo continua
 
         #MENU
-        for i in range(altura):
+        for i in range(altura):#Printa a matriz do campo minado de forma formatada para melhor visualização do usuário
+            print(f'[{i}]')
             for j in range(largura):
                 print(colunas[i][j], end = ' ')
             print(' ')
@@ -106,32 +107,38 @@ while True:
             x = int(input('Digite uma linha: '))
 
             colunas[x][y] = 'M'
-        
+    
         if decisao == 2:
             y = int(input('Digite uma coluna: '))
             x = int(input('Digite uma linha: '))
+        
+            if (x < largura) and not (x > largura) and (y < altura) and not (y > altura):
+                posicao = x * largura + y
 
-            posicao = x * largura + y
+                if colunas[x][y] == '*':
 
-            if colunas[x][y] == '*':
+                    total_bombas_vizinhas = contar_bombas_vizinhas(x,y,largura,altura,posicoes_minas)
+                    colunas[x][y] = str(total_bombas_vizinhas)
 
-                total_bombas_vizinhas = contar_bombas_vizinhas(x,y,largura,altura,posicoes_minas)
-                colunas[x][y] = str(total_bombas_vizinhas)
+                if posicao in posicoes_minas:
+                    
+                    print('')
+                    print('Game Over')
+                    print('')
 
-            if posicao in posicoes_minas:
-                
+                    for i in posicoes_minas:
+                        linha = i// largura
+                        coluna = i % largura
+                        colunas[linha][coluna] = "B"
+
+                    for i in range(altura):
+                        for j in range(largura):
+                            print(colunas[i][j], end = ' ')
+                        print(' ')
+                    
+                    break
+            else:
                 print('')
-                print('Game Over')
+                print(f'Selecione uma posição dentro da matriz [{largura}][{altura}]')
                 print('')
-
-                for i in posicoes_minas:
-                    linha = i// largura
-                    coluna = i % largura
-                    colunas[linha][coluna] = "B"
-
-                for i in range(altura):
-                    for j in range(largura):
-                        print(colunas[i][j], end = ' ')
-                    print(' ')
-                
-                break
+            
