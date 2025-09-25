@@ -1,3 +1,5 @@
+from math import ceil
+
 print(' ') #Espaço de separação
 
 #Frase
@@ -70,9 +72,11 @@ palavras_invertidas = []
 for i in range(len(palavras)):
 
     palavras_invertidas.append(palavras[i][::-1])
+   
 
+frase_invertida = " ".join(palavras_invertidas)
 
-print(f'Frase invertida: "{frase[::-1]}"')
+print(f'Frase invertida: "{frase_invertida}"')
 
 print(' ') #Espaço de separação
 
@@ -86,27 +90,14 @@ for i in range(len(palavras)):
 
 media = media/len(palavras)
 
-print(f'Média de caracteres por palavra: {media}')
+print(f'Média de caracteres por palavra: {ceil(media)}.0')
 
 print(' ') #Espaço de separação
 
 #Ordem alfabética inversa
 
-ordem_alfabetica = []
+ordem_alfabetica = sorted(palavras_invertidas,reverse=True)
 
-alfabeto = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',]
-
-for i in range(len(alfabeto)):
-     
-     
-     for j in range(len(palavras)):
-          
-          if palavras[j].startswith(alfabeto[i]):
-               
-               ordem_alfabetica.append(palavras[j][::-1])
-
-
-
-print(f'Palavras em ordem alfabética inversa:{ordem_alfabetica[::-1]}')
+print(f'Palavras em ordem alfabética inversa:{ordem_alfabetica}')
 
 print(' ') #Espaço de separação
