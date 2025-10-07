@@ -8,7 +8,7 @@ for rio, pais in rios.items():
   
     
     if i == 0:
-        print(f"\nO {rio} é um dos principais rios da região nerdeste do {pais}.\n")
+        print(f"\nO {rio} é um dos principais rios da região nordeste do {pais}.\n")
     elif i == 1:
        print(f'\nO {rio} é o conhecido rio que auxiliou na construção do antigo {pais}.\n')
     elif i == 2:
