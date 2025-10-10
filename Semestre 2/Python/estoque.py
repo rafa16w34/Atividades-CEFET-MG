@@ -1,7 +1,3 @@
-quantidade = []
-valor = []
-
-informacoes = [quantidade,valor]
 
 estoque = {}
 
@@ -20,11 +16,11 @@ while sair == 0:
 
 
             case 1:#Exibe o estoque
-                i = 0
+                
                 for nomes,informacoes in estoque.items():
                     
-                    print(f'\nNome: {nomes}\nQuantidade do produto: {informacoes[0][0+i]}\nValor unitário do produto: {informacoes[1][0+i]}\n\n')
-                    i+=1
+                    print(f'\nNome: {nomes}\nQuantidade do produto: {informacoes['quantidade']}\nValor unitário do produto: {informacoes['preco']}\n\n')
+                
 
 
 
@@ -35,36 +31,33 @@ while sair == 0:
                 try: 
                     quantidade_novo = int(input('\nDigite a quantidade do novo produto.\n'))
 
-                    quantidade.append(quantidade_novo)
-
                     valor_novo = int(input('\nDigite o valor do novo produto.\n'))
 
-                    valor.append(valor_novo)
+                    estoque[nome] = { "quantidade": quantidade_novo, "preco": valor_novo}
 
 
                 except(ValueError):
                     print('\nDeve ser digitado um número inteiro!\n')
 
+                valor = {"quantidade": quantidade_novo, "preco": valor_novo}
 
-                estoque[nome] = informacoes
+                estoque[nome] = valor
 
-            case 3:#Altera informções do produto
+            case 3:#Altera informações do produto
                 chave = str(input('\nDigite o nome do produto que gostaria de alterar\n'))
 
                 
                 if chave in list(estoque.keys()):
 
-                    indice = list(estoque.keys()).index(chave)
 
                     try:
                     
                         quantidade_novo = int(input('\nDigite a nova quantidade para o produto.\n'))
 
-                        quantidade[indice] = quantidade_novo
-
                         valor_novo = int(input('\nDigite o novo valor do produto.\n'))
 
-                        valor[indice] = valor_novo
+                        estoque[chave]["quantidade"] = quantidade_novo
+                        estoque[chave]["preco"] = valor_novo
 
                     except(ValueError):
                         print('\nDeve ser digitado um número inteiro!\n')
@@ -72,30 +65,28 @@ while sair == 0:
                 else:
                     print(f'\n"{chave}" não é um do produtos presentes no estoque.\n')
 
-                estoque[chave] = informacoes
+            
 
             case 4:#Calcula o valor total do estoque
 
-                valor__total = 0
+                valor_total = 0
 
-                for i in range(len(quantidade)):
+                for info in estoque.items():
 
-                    print(valor__total)
+                    print(valor_total)
                     
-                    valor__total += quantidade[i] * valor[i]
+                    valor_total += valor['quantidade'] * valor['preco']
             
-                print(f'\nO valor total do estoque é de R$ {valor__total},00\n')
+                print(f'\nO valor total do estoque é de R$ {valor_total},00\n')
 
-            case 5:#Exclui o produto
+            case 5:#Exclui o produto1
 
                 chave = str(input('\nDigite o nome do produto que você gostaria de excluir\n'))
 
                 if chave in list(estoque.keys()):
 
-                    indice = list(estoque.keys()).index(chave)
-
-                    del(quantidade[indice])
-                    del(valor[indice])
+                    del(estoque[chave]['quantidade'])
+                    del(estoque[chave]['preco'])
 
                     del(estoque[chave])
 
