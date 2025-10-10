@@ -1,5 +1,5 @@
 
-estoque = {}
+estoque = {}   
 
 sair = 0
 
@@ -18,9 +18,16 @@ while sair == 0:
 
             case 1:#Exibe o estoque
                 if estoque:
+
+                    print('\nESTOQUE COMPLETO: \n')
+
+                    i = 1
+
                     for nomes,informacoes in estoque.items():
                         
-                        print(f'\nNome: {nomes}\nQuantidade do produto: {informacoes['quantidade']}\nValor unitário do produto: {informacoes['preco']}\n\n')
+                        print(f'\n(Produto {i})\nNome: {nomes}\nQuantidade do produto: {informacoes['quantidade']}\nValor unitário do produto: R$ {informacoes['preco']},00\n')
+                        
+                        i+=1
 
                 else:
                     print('\nEstoque vazio.\n')    
@@ -31,20 +38,28 @@ while sair == 0:
                 
                 nome = str(input('\nDigite o nome do produto.\n'))
 
-                try: 
-                    quantidade_novo = int(input('\nDigite a quantidade do novo produto.\n'))
+                nome = nome.capitalize()
 
-                    valor_novo = int(input('\nDigite o valor do novo produto.\n'))
+                if nome in list(estoque.keys()):
 
-                    estoque[nome] = { "quantidade": quantidade_novo, "preco": valor_novo}
+                    print('\nEsse nome já foi cadastrado no estoque, você pode escolher alterar suas informações selecionando a opção 3 no menu.\n')
+
+                else:
+
+                    try: 
+                        quantidade_novo = int(input('\nDigite a quantidade do novo produto.\n'))
+
+                        valor_novo = int(input('\nDigite o valor do novo produto.\n'))
+
+                        estoque[nome] = { "quantidade": quantidade_novo, "preco": valor_novo}
 
 
-                except(ValueError):
-                    print('\nDeve ser digitado um número inteiro!\n')
+                    except(ValueError):
+                        print('\nDeve ser digitado um número inteiro!\n')
 
-                valor = {"quantidade": quantidade_novo, "preco": valor_novo}
+                    valor = {"quantidade": quantidade_novo, "preco": valor_novo}
 
-                estoque[nome] = valor
+                    estoque[nome] = valor
 
 
 
@@ -81,11 +96,9 @@ while sair == 0:
 
                     valor_total = 0
 
-                    for info in estoque.items():
+                    for i in estoque.values():
 
-                        print(valor_total)
-                        
-                        valor_total += valor['quantidade'] * valor['preco']
+                        valor_total += i['quantidade'] * i['preco']
 
                 
                     print(f'\nO valor total do estoque é de R$ {valor_total},00\n')
@@ -120,9 +133,11 @@ while sair == 0:
 
                     ordem_alfabetica = sorted(list(estoque.keys()))
 
+                    print('\nESTOQUE ORGANIZADO EM ORDEM ALFABÉTICA:\n')
+
                     for i in range(len(estoque.keys())):
 
-                        print(f'| {ordem_alfabetica[i]} | {estoque[ordem_alfabetica[i]]['quantidade']} | {estoque[ordem_alfabetica[i]]['preco']} |')
+                        print(f'\n(Produto {i+1})\nNome: {ordem_alfabetica[i]}\nQuantidade do produto: {estoque[ordem_alfabetica[i]]['quantidade']}\nValor unitário do produto: R$ {estoque[ordem_alfabetica[i]]['preco']},00 ')
                 else:
                     print('\nEstoque vazio.\n')
 
@@ -130,9 +145,12 @@ while sair == 0:
                 if estoque:
                     ordem_decrescente = sorted(estoque.keys(), key=lambda nome: (estoque[nome]['quantidade'] * estoque[nome]['preco']), reverse=True)
 
+                    print('\nESTOQUE ORGANIZADO EM ORDEM CRESCENTE COM BASE NO VALOR TOTAL DOS PRODUTOS:\n')
+
                     for i in range(len(ordem_decrescente)):
 
-                        print(f'| {ordem_decrescente[i]} | {estoque[ordem_decrescente[i]]['quantidade']} | R$ {estoque[ordem_decrescente[i]]['preco']},00 | R$ {estoque[ordem_decrescente[i]]['quantidade'] * estoque[ordem_decrescente[i]]['preco']},00')
+                        print(f'\n(Produto {i+1})\nNome: {ordem_decrescente[i]}\nQuantidade do produto: {estoque[ordem_decrescente[i]]['quantidade']}\nValor unitário do produto: R$ {estoque[ordem_decrescente[i]]['preco']},00\nValor total do produto no estoque: R$ {estoque[ordem_decrescente[i]]['quantidade'] * estoque[ordem_decrescente[i]]['preco']},00')
+
                 else:
                     print('\nEstoque vazio.\n')
 
