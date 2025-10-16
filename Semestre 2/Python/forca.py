@@ -1,5 +1,7 @@
 from random import sample #Usado para sortear um indice aleatório para a lista de palavras
 
+print('\nSeja bem vindo ao jogo da Forca.\nPara jogar siga as instruções que forem dadas no terminal.\nFeito por Rafael Alves F.\n')
+
 palavras = ['abacaxi', 'carro', 'bicicleta', 'bola', 'avestruz', 'urubu', 'elefante']#Lista de palavras
 
 palavra_sorteada = sample((palavras),1)#Sorteia um indice aleatório
@@ -15,47 +17,45 @@ for i in range(tamanho):#Adiciona os tracinhos na lista, sendo o número de trac
 palavra_forca = ''.join(palavra_criptografada)#Transforma a lista em string
 
 
-print(f'\nPalavra: {palavra_sorteada[0].title()} (Tamanho: {tamanho})\nPalavra criptografada: {palavra_forca} (Tamanho: {len(palavra_criptografada)}\n)')# Teste
-
 perder = 0 #Variável de controle para o loop do jogo
 
 def forca(perder):#Função que printa a forca
 
     if perder == 0:
-        print("""____\n    |\n""")
+        print('____\n    |\n\n\n\n')
 
     if perder == 1:
-        print("""____\n    |\n    O\n""")
+        print('____\n    |\n    O\n\n\n')
         
     if perder == 2:
-        print("""____\n    |\n    O\n    |\n""")
+        print('____\n    |\n    O\n    |\n\n')
         
     if perder == 3:
-        print("""____\n    |\n    O\n    |\ \n""")
+        print('____\n    |\n    O\n    |-- \n\n')
 
     
     if perder == 4:
-        print("""_____\n     |\n     O\n    /|\ \n""")
+        print('_____\n     |\n     O\n   --|-- \n\n')
 
     
     if perder == 5:
-        print("""_____\n     |\n     O\n    /|\ \n    /\n""")
+        print('_____\n     |\n     O\n   --|-- \n    -\n')
 
     
     if perder == 6:
-        print("""_____\n     |\n     O\n    /|\ \n     /\ \n""")
+        print('_____\n     |\n     O\n   --|-- \n    - - \n')
 
 jogadas = { 'acertos':'','erros':''} #Dicionário que guarda as letras.
 
 while perder < 6: #Loop básico do jogo, enquanto no perder..
 
-    forca(perder)
+    forca(perder)#Printa a forca
 
-    print(jogadas)
+    print(jogadas)#Printa as letras que o usuário escolheu, as que tem e não tem na palavra
 
     print(f'\n{palavra_forca}\n')#Mostra a palavra criptografada
 
-    letra = str(input('\nDigite uma letra:\n')) #Pede uma letra ao usuário
+    letra = str(input('\nDigite uma letra:\n')).lower() #Pede uma letra ao usuário
 
     if (letra in jogadas['acertos']) or (letra  in jogadas['erros']):#Verifica se o usuário vai digitar letras diferentes
 
@@ -64,6 +64,10 @@ while perder < 6: #Loop básico do jogo, enquanto no perder..
     if (letra not in jogadas['acertos']) and (letra not in jogadas['erros']):
 
         if len(letra) == 1:#Para controlar que o usuário digite somente um caractere
+
+            if not letra.isalpha():
+                print('\nDigite apenas letras!\n')
+                continue
 
             indices = [] #Uma lista que irá armazenar os indices da letra, escolhida pelo usuário, na palavra sorteada
 
