@@ -20,7 +20,7 @@ def printar_labirinto(m,n):#Função para printar o labirinto
             numero_colunas.append(numero)
             numero = numero + 1
 
-        for i in range(numero):#Printa o labbirinto todo já formatado    
+        for i in range(numero):#Printa o labirinto todo já formatado    
 
             if i == 0:
                 print('  ',end='')
