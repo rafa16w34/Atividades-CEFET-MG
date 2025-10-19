@@ -12,17 +12,17 @@ class Biblioteca():                                                             
             for i in range(numero_de_livros):                                                                                               #Controla para que o usuário possa adicionar a quanttidade pedida de livros
                 livro_novo = str(input('\nDigite o nome do livro que gostaria de adicionar:\n-> '))                                         #Usuário digita o nome do livro
 
-                if livro_novo in self.livros_disponiveis:
+                if livro_novo in self.livros_disponiveis:                                                                                   #Avisa se o livro já estiver cadastrado
 
                     print(f'\nO livro {livro_novo} já está cadastrado em nossa biblioteca\n')
 
-                elif any(livro_novo in livros for livros in self.livros_emprestados.values()):
+                elif any(livro_novo in livros for livros in self.livros_emprestados.values()):                                              #Avisa se o livro já estiver cadastrado mas foi pego
 
                     print(f'\nO livro {livro_novo} já está cadastrado em nossa biblioteca mas foi pego emprestado por alguém.\n')
 
                 else:
-                    self.livros_disponiveis.append(livro_novo.lower())                                                                          #Por padrão os livros são salvos em letra minúscula para que não tenha problema do usuário digitar o nome de alguma forma diferente (Ex: Narnia e narnia)
-                    print(f'\nO livro "{livro_novo.title()}" foi adicionado a lista de livros disponíveis!\n')                                  #Uma mensagem informa o usuário que o livro foi cadastrado com sucesso
+                    self.livros_disponiveis.append(livro_novo.lower())                                                                      #Por padrão os livros são salvos em letra minúscula para que não tenha problema do usuário digitar o nome de alguma forma diferente (Ex: Narnia e narnia)
+                    print(f'\nO livro "{livro_novo.title()}" foi adicionado a lista de livros disponíveis!\n')                              #Uma mensagem informa o usuário que o livro foi cadastrado com sucesso
 
         except(ValueError):                                                                                                                 #Caso o usuário digite algum caractere diferente de um número inteiro, esse aviso irá aparecer para ele
             print('\nErro: Digite um número inteiro!\n')
@@ -53,28 +53,28 @@ class Biblioteca():                                                             
         else:                                                                                                                               #Caso a lista de livros disponíveis esteja vazia, essa mensagem irá aparecer
             print('\nNenhum livro disponível para empréstimo!\n')
 
-    def exibir_livros(self):                                                                                                                #Função que exibe a lista completa de livros disponíveis
+    def exibir_livros(self):                                                                                                                    #Função que exibe a lista completa de livros disponíveis
 
-        if len(self.livros_disponiveis) > 0:                                                                                                #Caso a lista de livros disponíveis não esteja vazia..
+        if len(self.livros_disponiveis) > 0:                                                                                                    #Caso a lista de livros disponíveis não esteja vazia..
 
-            print('\nLISTA DE LIVROS DIPONÍVEIS:\n')                                                                                        #Título da exibição
+            print('\nLISTA DE LIVROS DIPONÍVEIS:\n')                                                                                            #Título da exibição
 
-            for i in range(len(self.livros_disponiveis)):                                                                                   #Navega por toda a lista de livros disponíveis
-                print(f'\nLivro {i+1}: {(self.livros_disponiveis[i]).title()}')                                                             #Printa para cada livro, o seu número e o seu nome, sempre com a primeira letra maiúscula
+            for i in range(len(self.livros_disponiveis)):                                                                                       #Navega por toda a lista de livros disponíveis
+                print(f'\nLivro {i+1}: {(self.livros_disponiveis[i]).title()}')                                                                 #Printa para cada livro, o seu número e o seu nome, sempre com a primeira letra maiúscula
 
-        else:                                                                                                                               #Caso a lista de livros disponíveis esteja vazia, essa mensagem irá aparecer
+        else:                                                                                                                                   #Caso a lista de livros disponíveis esteja vazia, essa mensagem irá aparecer
 
             print('\nNenhum livro disponível para empréstimo!\n')
 
-    def emprestimo_livro(self):                                                                                                             #Função que permite que o usuário pegue um livro emprestado
+    def emprestimo_livro(self):                                                                                                                 #Função que permite que o usuário pegue um livro emprestado
 
-        if len(self.livros_disponiveis) > 0:                                                                                                #Caso a lista de livros disponíveis não esteja vazia..
+        if len(self.livros_disponiveis) > 0:                                                                                                    #Caso a lista de livros disponíveis não esteja vazia..
                 
-            try:                                                                                                                            #Controla que o usuário não irá digitar algo diferente de um número inteiro
+            try:                                                                                                                                #Controla que o usuário não irá digitar algo diferente de um número inteiro
 
-                nome = (str(input('\nDigite seu nome:\n-> '))).lower()                                                                                #Usuário digita o seu nome
+                nome = (str(input('\nDigite seu nome:\n-> '))).lower()                                                                          #Usuário digita o seu nome
 
-                if nome in list(self.livros_emprestados.keys()):
+                if nome in list(self.livros_emprestados.keys()):                                                                                #Avisa se o usário já está cadastrado
 
                     print('\nEsse usuário já está cadastrado com livros emprestados, devolva os livros emprestados antes de pegar mais.\n')
                     
@@ -96,64 +96,64 @@ class Biblioteca():                                                             
                         else:                                                                                                                   #Caso o livro digitado não esteja presente na lista de livros disponíveis, essa mensagem irá aparecer para o usuário
                             print(f'\nO livro {livro_emprestimo.title()} não está em nossa lista de livros disponíveis.\n')
 
-                    if livros_emprestados_controle != None:
+                    if livros_emprestados_controle != None:                                                                                     #Verifica se a lista de livros emprestados está vazia
 
                         print(f'\nCADASTRO DO EMPRÉSTIMO:\nNome: {nome.title()}')
 
-                        self.livros_emprestados[nome] = livros_emprestados_controle                                                                #A lista de controle é atibuída como o valor no dicionário de livros emprestados
+                        self.livros_emprestados[nome] = livros_emprestados_controle                                                             #A lista de controle é atibuída como o valor no dicionário de livros emprestados
 
                         for i in range(len(self.livros_emprestados[nome])):
 
-                            print(f'\nLivro {i+1}: {(livros_emprestados_controle[i]).title()}\n')                                                  #Exibe quais livros o usuário cadastrado pegou emprestado
+                            print(f'\nLivro {i+1}: {(livros_emprestados_controle[i]).title()}\n')                                               #Exibe quais livros o usuário cadastrado pegou emprestado
 
                     else:
                         print(f'\nErro: Usuário "{nome.title()}" não cadastrado!\n')
 
 
-            except(ValueError):                                                                                                             #Caso o usuário digite algum caractere diferente de um número inteiro, esse aviso irá aparecer para ele
+            except(ValueError):                                                                                                                 #Caso o usuário digite algum caractere diferente de um número inteiro, esse aviso irá aparecer para ele
                 print('\nErro: Digite um número inteiro!\n')
 
 
-        else:                                                                                                                               #Caso a lista de livros disponíveis esteja vazia, essa mensagem irá aparecer
+        else:                                                                                                                                   #Caso a lista de livros disponíveis esteja vazia, essa mensagem irá aparecer
             
             print('\nNenhum livro disponível para empréstimo!\n')
     
-    def exibir_livros_emprestados(self):                                                                                                                #Função que exibe a lista completa de livros disponíveis
+    def exibir_livros_emprestados(self):                                                                                                        #Função que exibe o dicionário completo de livros emprestados
 
-            if len(self.livros_emprestados) > 0:                                                                                                #Caso a lista de livros disponíveis não esteja vazia..
+            if len(self.livros_emprestados) > 0:                                                                                                #Caso o dicionário de livros emprestados não esteja vazio..
 
-                print('\nLISTA DE LIVROS EMPRESTADOS:\n')                                                                                        #Título da exibição
+                print('\nLISTA DE LIVROS EMPRESTADOS:\n')                                                                                       #Título da exibição
 
-                for nome,livro in self.livros_emprestados.items():
+                for nome,livro in self.livros_emprestados.items():                                                                              #Exibe o dicionário, mostrando o nome cadastrado e os livros pegos por essa pessoa
 
                     print(f'\nNome:{nome.title()}')
 
                     for i in range(len(livro)):
                         print(f'\nLivros {i}:{(livro[i+1]).title()}')
 
-            else:                                                                                                                               #Caso a lista de livros disponíveis esteja vazia, essa mensagem irá aparecer
+            else:                                                                                                                               #Caso o dicionário de livros emprestados esteja vazio, essa mensagem irá aparecer
 
                 print('\nNenhum livro foi pego para empréstimo!\n')
 
-    def devolver_livros(self):
+    def devolver_livros(self):                                                                                                                  #Função para devolver livros, fiz essa função a mais para caso uma pessoa queira pegar mais livros. Sendo assim, para pegar outros livros ela precisa devolver os livros que pegou antes
 
-        if len(self.livros_emprestados) > 0:  
+        if len(self.livros_emprestados) > 0:                                                                                                    #Verifica se o dicionário está vazio
 
-            nome = (str(input('\nDigite o seu nome de usuário cadastrado:\n-> '))).lower()
+            nome = (str(input('\nDigite o seu nome de usuário cadastrado:\n-> '))).lower()                                                      #Recebe o nome cadastrado
 
-            if nome in self.livros_emprestados:
+            if nome in self.livros_emprestados:                                                                                                 #Verifica se o nome é uma chave do dicionário
                 
-                for livro in self.livros_emprestados[nome]:
+                for livro in self.livros_emprestados[nome]:                                                                                     #Acrescenta cada livro do dicionário na lista de livros disponíveis, "retornando" eles para a biblioteca
                     self.livros_disponiveis.append(livro)
                     
-                del self.livros_emprestados[nome]
+                del self.livros_emprestados[nome]                                                                                               #Deleta os dados cadastrados da pessoa, permitindo que ela pegue mais livros
 
-                print(f'\nOs livros pegos pelo usuário cadastrado como "{nome.title()}" foram devolvidos!\n')
+                print(f'\nOs livros pegos pelo usuário cadastrado como "{nome.title()}" foram devolvidos!\n')                                   #Avisa o usuário que os livros foram devolvidos com sucesso
             
             else:
 
-                print(f'\nO nome "{nome.title()}" não está cadastrado\n')
+                print(f'\nO nome "{nome.title()}" não está cadastrado\n')                                                                       #Caso o nome informado não esteja cadastrado, essa mensagem irá aparecer
 
-        else:                                                                                                                               #Caso a lista de livros disponíveis esteja vazia, essa mensagem irá aparecer
+        else:                                                                                                                                   #Caso a lista de livros disponíveis esteja vazia, essa mensagem irá aparecer
 
             print('\nNenhum livro foi pego para empréstimo!\n')
