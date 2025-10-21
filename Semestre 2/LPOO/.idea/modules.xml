@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LPOO.iml" filepath="$PROJECT_DIR$/LPOO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lista de POO/Lista de POO.iml" filepath="$PROJECT_DIR$/Lista de POO/Lista de POO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Trabalho LPOO - Rafael Alves Faria/Trabalho LPOO - Rafael Alves Faria.iml" filepath="$PROJECT_DIR$/Trabalho LPOO - Rafael Alves Faria/Trabalho LPOO - Rafael Alves Faria.iml" />
+    </modules>
+  </component>
+</project>
