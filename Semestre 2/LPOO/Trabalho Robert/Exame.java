@@ -1,13 +1,14 @@
-public class Exame extends Cliente{
+public class Exame{
 
     private String nome;
     private String tipo;
+    private Cliente convenio;
 
-    public Exame(String nome,String tipo,boolean convenio){
+    public Exame(String nome,String tipo,Cliente convenio){
 
-        super(convenio);
         this.nome = nome;
         this.tipo = tipo;
+        this.convenio = convenio;
 
     }
 

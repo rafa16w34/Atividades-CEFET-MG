@@ -1,4 +1,4 @@
-public class Convenio extends Cliente{
+public class Convenio{
 
     private String nome;
     private String empresa;

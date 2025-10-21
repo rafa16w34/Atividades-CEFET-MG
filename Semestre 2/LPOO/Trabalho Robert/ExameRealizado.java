@@ -13,7 +13,7 @@ public class ExameRealizado {
         this.idCliente = idCliente;
         this.idExame = idExame;
         this.data = data;
-        this.hora = hora
+        this.hora = hora;
 
     }
 
@@ -22,10 +22,6 @@ public class ExameRealizado {
     }
 
     public void pegarIdExame(){
-
-    }
-
-    public void pegarIdCliente(){
 
     }
 
