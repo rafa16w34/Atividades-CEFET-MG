@@ -1,0 +1,31 @@
+Lista de palavras sobre computação
+Algoritmo
+Processador
+Memória
+Compilador
+Byte
+Kernel
+Rede
+Firewall
+Banco de dados
+Software
+Hardware
+Sistema operacional
+Cache
+Servidor
+Cliente
+Protocolo
+Criptografia
+Interface
+Driver
+Script
+Linguagem
+Framework
+Debug
+Variável
+Loop
+Função
+Pacote
+API
+Virtualização
+Backup

@@ -1,0 +1,10 @@
+
+Em Python podemos..
+manipular strings, 
+criar listas, 
+tuplas, 
+matrizes, 
+dicionários, 
+podemos criar funções, 
+classes, objetos, 
+e até mesmo ler e escrever informações em arquivos txt
