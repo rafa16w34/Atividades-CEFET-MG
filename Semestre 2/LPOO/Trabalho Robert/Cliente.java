@@ -2,8 +2,8 @@ public class Cliente{
 
     private String nome;
     private int idade;
-    private String empresa;
-    private boolean convenio;
+    protected String empresa;
+    protected boolean convenio;
     private boolean fazEmCasa;
     private boolean prioridadeIdoso;
 
@@ -36,14 +36,14 @@ public class Cliente{
 
                 this.fazEmCasa = true;
                 System.out.format("\n%s prefere fazer seus exames em casa.\n",this.nome);
-                javax.swing.JOptionPane.showMessageDialog(null,"\n O(A) " + this.nome + "prefere fazer seus exames em casa.\n");
+                javax.swing.JOptionPane.showMessageDialog(null,"\n O(A) " + this.nome + " prefere fazer seus exames em casa.\n");
 
 
             }else{
 
                 this.fazEmCasa = false;
                 System.out.format("\n%s prefere fazer seus exames na Cliníca.\n",this.nome);
-                javax.swing.JOptionPane.showMessageDialog(null,"\n O(A) " + this.nome + "prefere fazer seus exames na cliníca.\n");
+                javax.swing.JOptionPane.showMessageDialog(null,"\n O(A) " + this.nome + " prefere fazer seus exames na cliníca.\n");
 
             }
 
