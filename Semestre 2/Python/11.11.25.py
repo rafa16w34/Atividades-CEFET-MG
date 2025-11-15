@@ -12,7 +12,7 @@ for i in range(len(dados)):
 
 
 plt.plot(vezesdois) # aumenta a espessura da linha (padrão = 1).
-plt.title("Tabuada do 2", fontsize=24) #Define o título ‘Dados’ e tamanho da fonte.
+plt.title("Tabuada do 2", fontsize=24) #Define o título 'Dados' e tamanho da fonte.
 plt.xlabel("X", fontsize=14) #Nomeia o exio x.
 plt.ylabel("X * 2", fontsize=14) #Nomeia o exio y.
 plt.tick_params(axis='both', labelsize=14)
@@ -87,8 +87,10 @@ plt.show()
 
 #Exercício 9
 
+meses = ['Jan.','Fev.','Marc','Abr.']
+
 parque_a = [200,220,250,270]
 parque_b = [180,210,240,260]
 
-plt.bar(parque_a,parque_b)
+plt.bar()
 plt.show()
