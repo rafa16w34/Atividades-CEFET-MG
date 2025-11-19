@@ -1,42 +1,35 @@
-/**
- * CONCEITOS: Herança (Especialização) e Sobrescrita (Override)
- * * XWing 'é uma' NaveEspacial. Ela herda tudo de NaveEspacial
- * e implementa os métodos abstratos.
- */
 public class XWing extends NaveEspacial {
+
+    //------------------------------------------------------------------------------
+
+    //Atributo do droide astromecânico.
 
     private DroideAstromech droide;
 
-    // O construtor da XWing chama o construtor da classe mãe (NaveEspacial)
+    //------------------------------------------------------------------------------
+
+    //Construtor atualizado:
+
     public XWing(String nomePiloto) {
-        super("X-Wing de " + nomePiloto, 100,20); // Define energia padrão de 100
-        this.droide = new DroideAstromech();
+        super("X-Wing de " + nomePiloto, 100,20); // Define energia padrão de 100 e escudo 20
+
+        this.droide = new DroideAstromech("R2-D2");// Cria o droide para a nave
     }
 
-    /**
-     * CONCEITO: Sobrescrita (Override)
-     * Implementação específica de 'mover' para a XWing.
-     */
+    //-------------------------------------------------------------------------------
+
     @Override
     public void mover() {
 
         System.out.println(getNome() + " avança pela trincheira em velocidade de ataque!");
     }
 
-    /**
-     * CONCEITO: Sobrescrita (Override)
-     * Implementação específica de 'disparar' para a XWing.
-     */
     @Override
     public void disparar() {
         System.out.println(getNome() + " dispara 4 lasers vermelhos interligados!");
     }
 
-    /**
-     * CONCEITO: Sobrecarga (Overload)
-     * Mesmo nome do método ('disparar'), mas com uma assinatura (parâmetros) diferente.
-     * O compilador sabe qual chamar com base nos argumentos.
-     */
+
     public void disparar(IDestruivel alvo) {
         System.out.println(getNome() + " mira e dispara lasers em " + alvo.getNome() + "!");
         // Lógica de dano (ex: 4 tiros de 10)
@@ -46,15 +39,23 @@ public class XWing extends NaveEspacial {
         alvo.receberDano(10);
     }
 
-    public void ativarEscudosDefletores() {
+    //---------------------------------------------------------------------------------------------
 
-    }
+    //Chama o metodo para ativar os escudos defletores
 
-    @Override
-    public void saltarParaHiperespaco() {
-    }
+    public void ativarEscudosDefletores() {};
 
-    public void iniarReparos(){
+    //---------------------------------------------------------------------------------------------
+
+    //Chama o metodo para saltar para o hiperespaço
+
+    public void saltarParaHiperespaco() {};
+
+    //---------------------------------------------------------------------------------------------
+
+    //Chama o metodo para o droide reparar a nave
+
+    public void iniciarReparos(){
 
         this.droide.reparar(this);
 

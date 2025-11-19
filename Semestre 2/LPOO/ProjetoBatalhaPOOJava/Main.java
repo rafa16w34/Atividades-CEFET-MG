@@ -1,17 +1,15 @@
 import java.util.List;
 
-/**
- * Ponto de entrada da simulação.
- * Aqui demonstramos o POLIMORFISMO e a SOBRECARGA.
- */
 public class Main {
 
     public static void main(String[] args) {
 
+        //-----------------------------------------------------------------------
+
         System.out.println("--- PARTE 1: DEMONSTRAÇÃO DE POLIMORFISMO (HERANÇA) ---");
         System.out.println("Criando uma lista do tipo ABSTRATO (NaveEspacial)...");
 
-        // Criamos uma lista da CLASSE MÃE (Abstrata)
+
         List<NaveEspacial> esquadrao = List.of(
             new XWing("Luke Skywalker"),
             new TIEFighter("Piloto Imperial 001"),
@@ -20,9 +18,6 @@ public class Main {
             new YWing("Jon Dutch Vander")
         );
 
-        // O "Loop Polimórfico"
-        // A variável 'nave' é do tipo 'NaveEspacial', mas o Java sabe
-        // qual método 'mover()' e 'disparar()' real deve chamar em tempo de execução.
 
         for (NaveEspacial nave : esquadrao) {
             nave.mover();
@@ -34,48 +29,42 @@ public class Main {
 
         System.out.println("\n--- PARTE 2: DEMONSTRAÇÃO DE SOBRECARGA (OVERLOAD) ---");
         
-        // Precisamos de uma referência direta à XWing para ver seus métodos específicos
-        XWing luke = (XWing) esquadrao.get(0); // Pegando a X-Wing do Luke da lista
-        TIEFighter vader = (TIEFighter) esquadrao.get(3); // Pegando o TIE do Vader
+
+        XWing luke = (XWing) esquadrao.get(0);
+        TIEFighter vader = (TIEFighter) esquadrao.get(3);
 
         YWing dutch = (YWing) esquadrao.get(4);
         TIEFighter stormtrooper = (TIEFighter) esquadrao.get(1);
 
-        // Chamando o método 1 (sem parâmetros)
+
         luke.disparar();
         dutch.disparar();
         
-        // Chamando o método 2 (SOBRECARGA, com parâmetro)
-        System.out.println("\n(Luke ataca Vader...)");
-        luke.disparar(vader); // Chama a versão sobrecarregada!
 
-        System.out.println("\nDutch ataca um stormtrooper!\n");
+        System.out.println("\n(Luke ataca Vader...)");
+        luke.disparar(vader);
+
+        System.out.println("\nDutch ataca o Piloto Imperial 001!\n");
         dutch.disparar(stormtrooper);
         
-        // TIEFighter não tem esse método sobrecarregado:
-        // vader.disparar(luke); // -> ISSO DARIA ERRO DE COMPILAÇÃO!
+
 
         // -----------------------------------------------------------------
 
         System.out.println("\n--- PARTE 3: DEMONSTRAÇÃO DE POLIMORFISMO (INTERFACES) ---");
         System.out.println("Criando uma lista do tipo INTERFACE (IDestruivel)...");
 
-        // Esta lista pode conter QUALQUER COISA que implemente 'IDestruivel'
+
         List<IDestruivel> alvosNaTrincheira = List.of(
-            esquadrao.get(1), // O TIE Fighter
+            esquadrao.get(1),
             new TorreTurbolaser("Alfa-01"),
-            esquadrao.get(0), // A X-Wing do Luke
+            esquadrao.get(0),
             new TorreTurbolaser("Beta-02"),
-            esquadrao.get(4), // A Y-Wing do Dutch
+            esquadrao.get(4),
             new TorreTurbolaser("Alfa-16")
         );
 
         System.out.println("\n(Um ataque coordenado atinge todos os alvos...)");
-
-        // Loop Polimórfico (baseado na Interface)
-        // O loop não se importa se o 'alvo' é uma NaveEspacial ou uma TorreTurbolaser.
-        // Ele só sabe que o objeto 'sabe' como 'receberDano'.
-
 
 
         for (IDestruivel alvo : alvosNaTrincheira) {
@@ -89,17 +78,43 @@ public class Main {
 
         }
 
+        //-------------------------------------------------------------------------------------------
+
+        //Escudos defletores
+
         luke.ativarEscudosDefletores(luke.getNome());
         dutch.ativarEscudosDefletores(dutch.getNome());
         vader.ativarEscudosDefletores(vader.getNome());
 
+        //Dano com escudos ativados
+
         luke.receberDano(10);
         luke.receberDano(40);
-        luke.receberDano(100);
 
         vader.receberDano(20);
 
-        System.out.println("---");
+        //---------------------------------------------------------------------------------------------
+
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+
+        //Extra (Para realmente tornar essa a batalha de Yavin):
+
+        System.out.println("MOMENTO MAIS CRÍTICO DA BATALHA:");
+
+        System.out.println("Luke Skywalker se aproxima do ponto fraco da Estrela da Morte!");
+
+        System.out.println( vader.getNome() + " avança para um ataque mas um antigo amigo ajuda Luke no momento mais preciso!");
+
+        System.out.println("Luke atira um torpedo de protóns no ponto fraco da Estrela da Morte, fazendo com que ela exploda completamente.");
+
+        System.out.println("Uma vitória para a Aliança Rebelde e para a Galáxia!");
+
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+
+        //---------------------------------------------------------------------------------------------
+
+
+        //Naves do esquadrão entram no hiperespaço
 
         for (NaveEspacial nave : esquadrao) {
 
@@ -109,12 +124,22 @@ public class Main {
 
         System.out.println("---");
 
-        luke.iniarReparos();
+        //----------------------------------------------------------------------------------------------
+
+        //R2 repara a nave do Luke
+
+        luke.iniciarReparos();
 
         System.out.println("---");
 
+        //-----------------------------------------------------------------------------------------------
+
+        //É mostrado quantas naves estavam presentes durante a grandiosa e memorável batalha de Yavin
+
         System.out.println("Total de naves na batalha: " + NaveEspacial.getTotalNavesCriadas());
 
+
+        System.out.println("Que a força esteja com você!");
 
     }
 }

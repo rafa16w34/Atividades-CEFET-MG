@@ -1,8 +1,16 @@
 public class DroideAstromech {
 
+    public String nome;
+
+    public DroideAstromech(String nome){
+
+        this.nome = nome;
+
+    }
+
     public void reparar(NaveEspacial naveAlvo){
 
-        System.out.println( "R2-D2 reparando " + naveAlvo.getNome() + "!");//sempre será r2?
+        System.out.println( this.nome + " reparando " + naveAlvo.getNome() + "!");//sempre será r2?
 
     }
 

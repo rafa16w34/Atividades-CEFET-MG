@@ -1,62 +1,54 @@
-/**
- * CONCEITOS: Classe Abstrata, Herança (Base), Encapsulamento
- * * 'abstract' significa que não podemos criar uma "NaveEspacial" genérica.
- * Temos que criar tipos específicos (XWing, TIE).
- * * Implementa 'IDestruivel' pois toda nave é, por definição, um alvo.
- */
 public abstract class NaveEspacial implements IDestruivel, IHiperdrive {
 
-    /**
-     * CONCEITO: Encapsulamento
-     * Atributos são 'private'. O acesso é controlado via métodos (get/set).
-     * Nenhuma classe externa pode fazer 'nave.energia = -1000'.
-     */
     private String nome;
     private int energia;
-    private int escudo;
-    private boolean escudo_ativado;
 
-    private static int totalNavesCriadas = 0;
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    // Construtor usado pelas classes filhas
+    private int escudo;//Armazena quanto de dano o escudo vai absorver
+    private boolean escudo_ativado;//Usado para verificar se o escudo está ou não ativado
+
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    private static int totalNavesCriadas = 0;//Salva o número de naves criadas
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Construtor atualizado
+
     public NaveEspacial(String nome, int energiaInicial,int escudo) {
         this.nome = nome;
         this.energia = energiaInicial;
-        this.escudo = escudo;
 
-        totalNavesCriadas ++;
+        this.escudo = escudo;   //Recebe o valor do escudo, ou seja, o quanto irá absorver de dano
+
+        totalNavesCriadas ++;   //Adiciona +1 a cada nave criada
     }
 
-    // --- Métodos Abstratos (Obrigatórios para as filhas) ---
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * CONCEITO: Método Abstrato (parte do Polimorfismo)
-     * Toda nave 'move', mas cada uma move de um jeito.
-     * Forçamos as classes filhas a implementar (sobrescrever) este método.
-     */
     public abstract void mover();
 
     public abstract void disparar();
 
-
-    // --- Implementação da Interface IDestruivel ---
-    // (Este comportamento é comum a todas as naves)
 
     @Override
     public String getNome() {
         return this.nome;
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
     @Override
     public void receberDano(int quantidade) {
 
-        if (escudo_ativado) {//Verifica se o escudos estão ativados
+        if (escudo_ativado) {           //Verifica se os escudos estão ativados
 
-            quantidade -= escudo;//O escudo absorve o dano
+            quantidade -= escudo;       //O escudo absorve o dano
 
-            if (quantidade > 0) { //Se os escudo quebrarem..
+            if (quantidade > 0) {       //Se os escudos quebrarem ...
 
-                this.energia -= quantidade;
+                this.energia -= quantidade; // Ele irá receber o resto do dano
 
                 if (this.energia < 0) {
                     this.energia = 0;
@@ -64,13 +56,15 @@ public abstract class NaveEspacial implements IDestruivel, IHiperdrive {
 
                 System.out.println(this.nome + " foi atingido e os seus escudos foram quebrados!Recebeu "+ (quantidade)  +" de dano.Energia restante: " + this.energia);
 
-            }else {
+            }else { //Senão ele irá ficar totalmente protegido do dano
 
                 System.out.println(this.nome + " foi atingido, mas os seus escudos o protegeram do dano!");
 
             }
 
         }else{
+
+            //Dano sem escudo
 
             this.energia -= quantidade;
             if (this.energia < 0) {
@@ -81,21 +75,25 @@ public abstract class NaveEspacial implements IDestruivel, IHiperdrive {
         }
     }
 
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
     @Override
     public boolean estaDestruido() {
         return this.energia <= 0;
     }
 
-    // --- Métodos de Acesso (Encapsulamento) ---
     
     public int getEnergia() {
         return this.energia;
     }
 
-    // Método específico que não existe nas TIE
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    // Método para ativar os escudos:
+
     public void ativarEscudosDefletores(String nome) {
 
-        if (escudo > 0) {
+        if (escudo > 0) {//Se o valor de escudo for maior que 0, então os escudos podem ser ativados (OBS: só não são ativados se for um caça TIE)
             System.out.println(nome + " ativa escudos defletores!");
             escudo_ativado = true;
         }else{
@@ -103,27 +101,34 @@ public abstract class NaveEspacial implements IDestruivel, IHiperdrive {
         }
     }
 
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Método para saltar para o Hiperespaço:
 
     public void saltarParaHiperespaco(String nome) {
 
-        if (escudo > 0) {//Verifica se é um tie
+        if (escudo > 0) {//Verifica se é um TIE
 
             if (escudo == 20) {//Verifica se é uma XWing
 
                 System.out.println("X-Wing (" + nome + ") entrando no hiper espaço!");
 
-            } else if (escudo == 40) {
+            } else if (escudo == 40) {//Verifica se é uma YWing
 
                 System.out.println("Y-Wing (" + nome + ") entrando no hiperespaço!");
 
             }
 
-        } else {
+        } else {//TIE não entram no Hiperespaço
+
             System.out.println("TIE (" + nome + ") não pode saltar para o hiper espaço!");
         }
 
     }
 
+    //------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    //Get da variável que salva quantas naves foram criadas
 
     public static int getTotalNavesCriadas(){
 

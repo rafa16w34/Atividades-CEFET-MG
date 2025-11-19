@@ -1,24 +1,21 @@
-/**
- * CONCEITOS: Herança e Sobrescrita
- * * TIEFighter também 'é uma' NaveEspacial.
- * Repare como ela NÃO tem o método 'disparar(IDestruivel alvo)'.
- */
 public class TIEFighter extends NaveEspacial {
 
+    //---------------------------------------------------------------------------------------------------------------------------------
+
+    //Construtor do TIE Fighter atualizado
     public TIEFighter(String idPiloto) {
-        super("TIE Fighter " + idPiloto, 60,0); // TIEs são mais frágeis, menos energia
+        super("TIE Fighter " + idPiloto, 60,0);
     }
 
+    //Construtor dos TIE Fighter com a energia customizada
     public TIEFighter(String idPiloto, int energiaCustomizada){
 
-        super("TIE Fighter de elite " + idPiloto, energiaCustomizada,0); //TIE Fighter com a energia customizada
+        super("TIE Fighter de elite de " + idPiloto, energiaCustomizada,0);
 
     }
 
-    /**
-     * CONCEITO: Sobrescrita (Override)
-     * Implementação específica de 'mover' para o TIE.
-     */
+    //--------------------------------------------------------------------------------------------------------------------------------------
+
     @Override
     public void mover() {
         System.out.println(getNome() + " manobra rapidamente! (Som: *TIEeeee*)");
@@ -30,10 +27,16 @@ public class TIEFighter extends NaveEspacial {
         System.out.println(getNome() + " dispara 2 lasers verdes!");
     }
 
-    @Override
-    public void saltarParaHiperespaco() {
+    //---------------------------------------------------------------------------------------------
 
+    //Chama o metodo para ativar os escudos defletores (mesmo que ele não possa fazer isso)
 
+    public void ativarEscudosDefletores() {};
 
-    }
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+
+    //Chama o metodo do hiperespaço (mesmo que ele não possa fazer isso)
+
+    public void saltarParaHiperespaco() {}
+
 }

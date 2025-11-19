@@ -1,8 +1,3 @@
-/**
- * CONCEITO: Implementação de Interface (sem Herança)
- * * Uma TorreTurbolaser NÃO É UMA NaveEspacial. Ela não 'move', não 'dispara' (da mesma forma).
- * Mas ela 'é um' IDestruivel. Pode estar na mesma lista de alvos que as naves.
- */
 public class TorreTurbolaser implements IDestruivel {
 
     private String id;
@@ -10,7 +5,7 @@ public class TorreTurbolaser implements IDestruivel {
 
     public TorreTurbolaser(String id) {
         this.id = "Torre " + id;
-        this.energia = 250; // Torres são muito resistentes
+        this.energia = 250;
     }
 
     @Override
@@ -30,7 +25,6 @@ public class TorreTurbolaser implements IDestruivel {
         return this.energia <= 0;
     }
 
-    // Método próprio da Torre
     public void rastrearAlvo(NaveEspacial nave) {
         System.out.println(this.id + " está rastreando " + nave.getNome() + "!");
     }
