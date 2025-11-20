@@ -1,27 +1,26 @@
 #ifndef NODO_HPP
 #define NODO_HPP
 
-#include <string>
+#include "Produto.hpp"
 
-class Nodo{
+class Nodo {
 
-    private:
+private:
+    Produto* produto;   // dado armazenado
+    Nodo* proximo;      // ponteiro para o próximo nó
 
-        std :: string descricao;
-        int quantidade;
-        int prioridade;
-        Nodo* proximo;
+public:
 
-    public:
+    // Construtor
+    Nodo(Produto* p)
+        : produto(p), proximo(nullptr) {}
 
-        Nodo( std :: string descricao, int quantidade, int prioridade);;
-        std:: string obterDescricao();
-        int obterQuantidade();
-        int obterPrioridade();
-        Nodo* obterProximo();
-        void definirProximo(Nodo* proximo);
+    // Getters
+    Produto* getProduto() const { return produto; }
+    Nodo* getProximo() const { return proximo; }
 
-
+    // Setter do próximo nó
+    void setProximo(Nodo* n) { proximo = n; }
 };
 
 #endif

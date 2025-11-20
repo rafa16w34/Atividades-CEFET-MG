@@ -1,55 +1,72 @@
 #include <iostream>
-#include "Lista.hpp"
-
-
 #include <string>
+
+#include "Lista.hpp"
+#include "Produto.hpp"
 
 Lista lista;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void adicionarProduto(){
+bool adicionarProduto(){
 
-    std :: string descricao;
-    int quantidade, prioridade;
-    bool inicioLista;
+    std::string descricao;
+    float peso;
+    int unidade;
+    float preco;
+    std::string id;
+    int quantidade;
 
+    std::cout << "\nDigite a descrição do produto:\n-> ";
+    std::getline(std::cin >> std::ws, descricao);
 
-    std :: cout<<"\nDigite a descrição do produto:\n-> "; //Preciso tratar as respostas do usuário
-
-    std :: getline(std::cin >> std::ws, descricao);
-
-
-    std :: cout<<"\nDigite a quantidade que se tem desse produto:\n-> ";
-
-      while (!(std :: cin >> quantidade)) {
-        std :: cout << "Entrada invalida! Digite um numero: ";
-        std :: cin.clear();            // limpa estado de erro
-        std :: cin.ignore(1000, '\n'); // descarta lixo do buffer
+    std::cout << "\nDigite o peso (kg):\n-> ";
+    while (!(std::cin >> peso)) {
+        std::cout << "Entrada inválida! Digite um número válido: ";
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
     }
 
-
-
-    std :: cout<<"\nDigite a prioridade do produto na lista:\n-> ";
-
-    while (!(std :: cin >> prioridade)) {
-        std :: cout << "Entrada invalida! Digite um numero: ";
-        std :: cin.clear();            // limpa estado de erro
-        std :: cin.ignore(1000, '\n'); // descarta lixo do buffer
+    std::cout << "\nDigite a unidade (ex: 1 = pacote, 2 = unidade, etc):\n-> ";
+    while (!(std::cin >> unidade)) {
+        std::cout << "Entrada inválida! Digite um número válido: ";
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
     }
 
-
-    std :: cout<<"\nGostaria de adicionar esse item no:\n0- Inicio da lista\n1- Final da lista\n-> ";
-
-    while (!(std :: cin >> inicioLista)) {
-        std :: cout << "Entrada invalida! Digite um numero: ";
-        std :: cin.clear();            // limpa estado de erro
-        std :: cin.ignore(1000, '\n'); // descarta lixo do buffer
+    std::cout << "\nDigite o preço:\n-> ";
+    while (!(std::cin >> preco)) {
+        std::cout << "Entrada inválida! Digite um número válido: ";
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
     }
-  
 
-    lista.adicionarLista( descricao,quantidade, prioridade, inicioLista);
+    std::cout << "\nDigite o ID do produto:\n-> ";
+    std::getline(std::cin >> std::ws, id);
+    
 
+    std::cout << "\nDigite a quantidade:\n-> ";
+    while (!(std::cin >> quantidade)) {
+        std::cout << "Entrada inválida! Digite um número válido: ";
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
+    }
+
+    if (id == "0"){
+
+        std :: cout << "\nErro: O ID não pode ser 0!\n";
+
+        return false;
+        
+    }else{
+
+        Produto* p = new Produto(descricao, peso, unidade, preco, id, quantidade);
+
+        // adiciona na lista
+        lista.adicionarLista(p);
+
+        return true;
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,79 +78,82 @@ void menu(){
 
     while(sair != 1){
             
-        std :: cout <<"\nMenu\n1- Adicionar itens;\n2- Remover o ultimo item;\n3- Verificar se o item existe;\n4- Exibir lista;\n5- Mostrar tamanho da lista\n0- Sair\n-> ";
+        std::cout <<"\nMenu\n1- Adicionar itens;\n2- Editar quantidade de um produto listado;\n3- Exibir lista;\n4- Finalizar carrinho de compras;\n0- Sair\n-> ";
         
         while (!(std::cin >> opcao)) {
-                std::cout << "Entrada inválida! Digite um número: ";
-                std::cin.clear();
-                std::cin.ignore(1000, '\n');
+            std::cout << "Entrada inválida! Digite um número: ";
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
         }
-
 
         switch (opcao){
 
             case 1:{//Adiciona o produto (na primiera ou última posição)
                 
-                adicionarProduto();
+                bool teste = adicionarProduto();
 
-                std :: cout <<"\nItem adicionado com sucesso!\n";
-                break;
-            }
+                if (teste == true){
 
-            case 2:{//Remove o último produto da lista
+                    std::cout <<"\nItem adicionado com sucesso!\n";
 
-                lista.removerUlltimo();
+                }
+                else{
 
-                std :: cout <<"\nÚltimo item removido com sucesso!\n";
-                break;
-            }
+                    std::cout <<"\nNão foi possível adicionar o produto!\n";
+                    
+                }
 
-            case 3:{//Verifica se o produto está presente na lista
-
-                std :: string descricao;
                 
-                std :: cout<<"\nDigite a descrição do produto:\n-> "; //Preciso tratar as respostas do usuário
+                break;
+            }
 
-                std :: getline(std::cin >> std::ws, descricao);
+            case 2:{//Permite editar a quantidade de um produto
 
-                bool existe = lista.estaPresente(descricao);
+                std :: string id = "";
 
-                if (existe == 1){
+                std::cout << "\nDigite o ID do produto:\n-> ";
+                std::getline(std::cin >> std::ws, id);
 
-                    std :: cout <<"\nO item esta presente na lista!\n";
+                bool verificar = lista.adicionarQuantidade(id);
+
+                if (verificar == true){
+
+                    std::cout <<"\nQuantidade alterada com sucesso!\n";
 
                 }else{
 
-                    std :: cout <<"\nO item não esta presente na lista\n";
+                    std::cout <<"\nErro: não existe um produto com este ID!\n";
 
                 }
+
                 break;
+
+            }
+
+            case 3:{//Exibe a lista completa
+
+               lista.exibirLista();
+                break;
+
             }
             
-            case 4:{//Exibe a lista completa
+            case 4:{//Carrinho de compras
                 
-                lista.exibirLista();
+               lista.CarrinhoDeCompras();
+               break;
 
-                break;
             }
 
-            case 5:{
-
-                int tamanho = lista.tamanhoLista();
-                
-                std :: cout <<"\nO tamanho da lista eh:" <<tamanho << "\n";
-                break;
-            }
 
             case 0:{
 
-                std :: cout<<"\nEncerrando sistema..\n";
+                std::cout<<"\nEncerrando sistema...\n";
                 sair = 1;
                 break;
             }
 
             default:{
-                std :: cout <<"\nDigite uma opcao valida!\n";
+                std::cout <<"\nDigite uma opção válida!\n";
                 break;
             }
         }
@@ -147,6 +167,5 @@ void menu(){
 int main(){
 
     menu();
-
     return 0;
 }

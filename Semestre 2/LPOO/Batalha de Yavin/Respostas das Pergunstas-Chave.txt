@@ -1,0 +1,19 @@
+1)Pergunta-Chave: "O loop principal (o for each) precisou ser alterado para fazer a YWing se mover e atirar? Por que não?"
+
+R: Não, pois ela também é uma classe filha de "NaveEspacial" e tem uma instância na lista "esquadrao" por isso não é necessário alterar.
+
+2)Pergunta-Chave: "Por que foi melhor adicionar escudos na NaveEspacial (classe mãe) em vez de adicionar separadamente na XWing e na YWing?"
+
+R: Pois dessa forma mantemos as boas práticas de POO, não deixando responsabilidades a mais para classes que não precisavam delas.
+
+3)Pergunta-Chave: "Por que usamos uma Interface (IHiperdrive) e não um Método Abstrato (saltarParaHiperespaco) na classe NaveEspacial?"
+
+R: Porque nem todas as naves podem saltar para o hiperespaço. Se colocássemos o método abstrato na classe mãe, então todas as subclasses teriam que implementar o método, inclusive TIEFighter e Torres sendo que elas não podem saltar para o hiperespaço. Isso violaria a hierarquia do código.
+
+4)Pergunta-Chave: Por que a XWing compôs um DroideAstromech (tem-um) em vez de herdar dele (é-um)?"
+
+R: Porque a XWing não "é um" droide astromecânico, mas sim ela "tem um" droide. Ou seja, essa escolha de relacionamento entre classes foi feita devido a lógica do nosso código.
+
+5)Pergunta-Chave: "Como o compilador sabe qual construtor do TIEFighter chamar, já que ambos têm o mesmo nome?"
+
+R: Ele sabe pois, o construtor TIEFighter de elite é chamado com dois argumentos, uma string de nome e o valor de energia, enquanto o outro só é chamado com a string nome. Ou seja, ele diferencia devido o número de argumentos dados.

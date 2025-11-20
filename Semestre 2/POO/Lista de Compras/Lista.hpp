@@ -2,23 +2,21 @@
 #define LISTA_HPP
 
 #include "Nodo.hpp"
-#include <string>
 
-class Lista{
+class Lista {
+private:
+    Nodo* cabeca;
+    Nodo* cauda;
 
-    private:
-        Nodo* cabeca;
-        Nodo* cauda;
+public:
 
-    public:
-        void adicionarLista(std :: string descricao, int quantidade, int prioridade,bool inicioLista);
-        void removerUlltimo();
-        bool estaPresente(std :: string descricao);
-        void exibirLista();
-        int tamanhoLista();
+    void adicionarLista(Produto* p);
+    bool adicionarQuantidade(std :: string id_procurado);
+    
+    void exibirLista();
 
-
+    float CarrinhoDeCompras();
+    
 };
 
 #endif
-
