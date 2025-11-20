@@ -82,9 +82,8 @@ public class Main {
 
         //Escudos defletores
 
-        luke.ativarEscudosDefletores(luke.getNome());
-        dutch.ativarEscudosDefletores(dutch.getNome());
-        vader.ativarEscudosDefletores(vader.getNome());
+        luke.ativarEscudosDefletores();
+        dutch.ativarEscudosDefletores();
 
         //Dano com escudos ativados
 
@@ -118,7 +117,16 @@ public class Main {
 
         for (NaveEspacial nave : esquadrao) {
 
-            nave.saltarParaHiperespaco(nave.getNome());
+            if (nave instanceof IHiperdrive hiper) {
+
+                hiper.saltarParaHiperespaco();
+
+            } else {
+
+                System.out.println(nave.getNome() + " não pode saltar para o hiperespaço!");
+
+            }
+
             System.out.println("---");
         }
 

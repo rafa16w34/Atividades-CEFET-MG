@@ -35,8 +35,5 @@ public class TIEFighter extends NaveEspacial {
 
     //-----------------------------------------------------------------------------------------------------------------------------------------
 
-    //Chama o metodo do hiperespaço (mesmo que ele não possa fazer isso)
-
-    public void saltarParaHiperespaco() {}
 
 }

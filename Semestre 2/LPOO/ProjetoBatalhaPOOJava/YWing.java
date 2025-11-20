@@ -1,4 +1,4 @@
-public class YWing extends NaveEspacial {
+public class YWing extends NaveEspacial implements IHiperdrive {
 
     //---------------------------------------------------------------------------------------------
 
@@ -41,5 +41,9 @@ public class YWing extends NaveEspacial {
 
     //Chama o metodo para saltar para o hiperespaço
 
-    public void saltarParaHiperespaco() {}
+    public void saltarParaHiperespaco() {
+
+        System.out.println( getNome() + " entrando no hiper espaço!");
+
+    }
 }

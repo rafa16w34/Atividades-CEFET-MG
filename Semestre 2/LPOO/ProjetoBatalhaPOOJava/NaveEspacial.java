@@ -1,4 +1,4 @@
-public abstract class NaveEspacial implements IDestruivel, IHiperdrive {
+public abstract class NaveEspacial implements IDestruivel {
 
     private String nome;
     private int energia;
@@ -89,12 +89,12 @@ public abstract class NaveEspacial implements IDestruivel, IHiperdrive {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    // Método para ativar os escudos:
+    // Metodo para ativar os escudos:
 
-    public void ativarEscudosDefletores(String nome) {
+    public void ativarEscudosDefletores() {
 
         if (escudo > 0) {//Se o valor de escudo for maior que 0, então os escudos podem ser ativados (OBS: só não são ativados se for um caça TIE)
-            System.out.println(nome + " ativa escudos defletores!");
+            System.out.println(this.nome + " ativa escudos defletores!");
             escudo_ativado = true;
         }else{
             System.out.println("Os TIE Fighter não tem escudos defletores!");
@@ -102,31 +102,6 @@ public abstract class NaveEspacial implements IDestruivel, IHiperdrive {
     }
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-    //Método para saltar para o Hiperespaço:
-
-    public void saltarParaHiperespaco(String nome) {
-
-        if (escudo > 0) {//Verifica se é um TIE
-
-            if (escudo == 20) {//Verifica se é uma XWing
-
-                System.out.println("X-Wing (" + nome + ") entrando no hiper espaço!");
-
-            } else if (escudo == 40) {//Verifica se é uma YWing
-
-                System.out.println("Y-Wing (" + nome + ") entrando no hiperespaço!");
-
-            }
-
-        } else {//TIE não entram no Hiperespaço
-
-            System.out.println("TIE (" + nome + ") não pode saltar para o hiper espaço!");
-        }
-
-    }
-
-    //------------------------------------------------------------------------------------------------------------------------------------------------------
 
     //Get da variável que salva quantas naves foram criadas
 
