@@ -1,3 +1,5 @@
+import entity.Cliente;
+
 public class Preço {
 
     private Cliente cliente;

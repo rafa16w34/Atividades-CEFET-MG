@@ -1,0 +1,84 @@
+Fazendo a Lista 2 de POO:
+
+Nome: Rafael Alves Faria
+-----------------------------------------------------------------------------------------------------------------------
+
+1)
+1.1) A herança múltipla é quando uma classe herda características de mais de uma classe, isso é útil em casos específicos onde essas classes complexas são necessárias. Um exemplo seria para os animais, onde poderíamos ter animais que andam mas também nadam, ou que andam e voam, etc, dessa forma a herança múltipla poderia ser útil.
+
+1.2) É um problema de herança múltipla que pode ocorrer, onde uma classe que herda de duas classes, as quais herdam de uma classe em comum, mas o problema é que a classe que herdou das duas recebe informações conflitantes, fazendo com que o compilador não saiba como proceder. Esse problema é conhecido como “Problema do Diamante” devido ao diagrama que o ilustra.
+
+1.3) O C++ resolve o “Problema do Diamante” ao usar a herança virtual. Essa técnica faz com que somente uma cópia da classe base seja herdada para as classes derivadas, evitando a duplicação de membros e a ambiguidade ao acessá-los.
+
+1.4) O Java não aceita a herança múltipla de classe justamente para evitar o “Problema do Diamante”. Ao invés disso, o Java permite que uma classe implemente várias interfaces.
+
+1.5)A principal diferença é que  herança múltipla permite que uma classe herde implementações (atributos e métodos completos) de múltiplas classes base, enquanto a implementação de múltiplas interfaces permite que uma classe herde apenas as assinaturas (contratos) de múltiplos comportamentos sem herdar a implementação em si impedindo que ocorra o “Problema do Diamante”.
+
+1.6)	---- Crie um sistema de biblioteca com Material, Livro, DVD e AudioLivro ----
+
+------------------------------------------------------------------------------------------------------------------------
+
+2)
+2.1) Polimorfismo de sobrecarga é quando uma classe tem vários métodos com o mesmo nome mas com chamadas diferentes.
+
+2.2) Em C++ um parâmetro default é um parâmetro pré definido que será usado pela função caso não seja fornecido nenhum valor.
+
+2.3) Essa função não existe em Java pois a filosofia da linguagem é principalmente, evitar ambiguidades, e por isso, os criadores preferiram não incluir os parâmetros default.
+
+2.4) As principais regras são:
+- Se um argumento for omitido, as subsequentes também devem ser;
+- Após a primeira especificação com valor default todos os parâmetros seguintes devem ser especificados com default;
+
+2.5) 	        ----  Implementar contrutores sobrecarregados para Pessoa  ----
+	(Atributos. : idade, nome, altura, peso, cor do cabelo ou nenhum desses)
+
+------------------------------------------------------------------------------------------------------------------------
+
+3)
+3.1) Os templates em C++ são um recurso para a programação genérica, ou seja, permitem que que você crie funções e classes que funcionem com um tipo qualquer definido no momento do uso, incluindo tipos definidos pelo usuário.
+
+3.2) Nos templates de função, você generaliza funções para funcionar com qualquer tipo (int, double, string, classes, etc.) enquanto que no template de classe você cria algo como um modelo de um classe que só funciona ao passar o tipo do dado.
+
+3.3) As vantagens do template são pricipalmente que o código fica mais limpo, sem repetições; alta perfomance já que são resolvidos durante a compilação, o que permite a criação de códigos de otimização, checagem etc. Enquanto que entre as devantagens podemos citar a demora para o tempo de compilação e a dificuldade para a separação do código em diferentes arquivos
+
+3.4) Basicamente funciona qunado o código recebe o tipo específico, ele substitui o tipo genérico pelo tipo que foi passado, caso a operação do código não exista para o tipo passado o erro aparece na instanciação.
+
+------------------------------------------------------------------------------------------------------------------------
+
+4)
+4.1) A vantagem do vector ao array é que, o vector possui um tamanho dinâmico enquanto o array é fixo e limitado
+
+4.2) Um vector armazena os dados dinamicamente, mas em memória contígua, como um array que pode crescer, já em uma lista encadeada (list), cada nó (nodo) contém o valor e ponteiros para o próximo e o anterior, e por fim, o queue funciona como um FIFO (first in, first out), ou seja, é uma estrutura do tipo fila, onde o primeiro que entra é o primeiro a sair.
+
+4.3) Stack é uma pilha, ou seja, de estrutura LIFO (Last in, first out) então o último termo a entrar será o primeiro a sair, enquanto que o queue é uma lista, de estrutura FIFO (First in, first out), ou seja o primeiro a ser inserido será o primeiero a sair.
+
+4.4) Um "Iterator" é um objeto que percorre os elementos de uma coleção, como uma lista, fila ou pilha. Os interator são importantes pois diversas vezes é necessário verificar o que está presente dentro das coleções e esse é um dos melhores métodos.
+
+4.5)       ---- Use um vector para armazenar e manipular uma lista de números ----
+
+4.6)       ---- Implemente uma pliha usando stack para verificar palíndromos ----
+
+4.7)       ---- Use queue para simular um sistema de atendimento ----
+
+------------------------------------------------------------------------------------------------------------------------
+
+5)
+5.1) Uma exceção serve para que o código perceba algum erro antes que ele ocorra, impedindo que o programa seja finalizado indevidadmente. Deve-se usar quando um erro pode ser previsto, para assim trata-lo da melhor forma possível.
+
+5.2) O try serve para definir blocos de códigos onde as exceções, o throw lança a exceção enquanto que o catch é aquele que manipula a exceção, mostrando uma mensagem de erro elegante ou pedindo para repetir a operação que gerou o erro.
+
+5.3) Em Java, as exceções verificadas são aquelas as quais o compilador obriga a tratar enquanto que as exceções não verificadas são de tratamento opcional.
+
+5.4) O bloco finally em Java é uma parte opcional do tratamento de exceções usada junto com try e catch. O finally é executado em todos os casos, exceto se o programa for encerrada abruptamente.
+
+5.5)    ---- Implemente o tratamento de exceções de divisão por zero ----
+
+5.6)    ---- Implemente um sistema de cadastro com validação de dados usando exceções ----
+
+------------------------------------------------------------------------------------------------------------------------
+
+6)
+6.1)		Implemente um sistema de gerenciamento de universidade usando:
+    		- Herança de Pessoa para Professor, Aluno, Funcionário
+    		- Tratamento de exceções personalizadas para dados inválidos
+    		- STL para armazenamento de dados
