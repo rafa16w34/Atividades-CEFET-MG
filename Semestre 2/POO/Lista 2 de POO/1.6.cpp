@@ -26,6 +26,7 @@ public:
 
 class Livro : public Material {
 public:
+
     Livro(string t, int a, int i)
         : Material(t, a, i) {}
 
@@ -34,6 +35,14 @@ public:
              << "\nAno: " << ano
              << "\nID: " << id << "\n";
     }
+
+    void ler(){
+
+        cout << "\nLendo o livro "<< titulo <<"\n";
+
+
+    }
+
 };
 
 // -------------------------------------------------
@@ -48,19 +57,27 @@ public:
              << "\nAno: " << ano
              << "\nID: " << id << "\n";
     }
+
+    void reproduzir(){
+
+        cout << "\nReproduzindo o dvd de "<< titulo << "\n";
+
+    }
+
 };
 
 // -------------------------------------------------
 
-class AudioLivro : public Material {
+class AudioLivro : public Livro, public DVD {
 public:
-    AudioLivro(string t, int a, int i)
-        : Material(t, a, i) {}
+
+    AudioLivro(string t, int a, int i) : Livro(t, a, i), DVD(t, a, i) {
+    }
 
     void mostrar() const override {
-        cout << "\n[AUDIOLIVRO]\nTítulo: " << titulo
-             << "\nAno: " << ano
-             << "\nID: " << id << "\n";
+        cout << "\n[AUDIOLIVRO]\nTítulo: " << Livro :: titulo
+             << "\nAno: " << DVD :: ano
+             << "\nID: " <<  Livro :: id << "\n";
     }
 };
 
@@ -68,15 +85,60 @@ public:
 
 int main() {
 
-    vector<shared_ptr<Material>> biblioteca;
+    string t,buffer;
+    int a;
+    int id;
 
-    biblioteca.push_back(make_shared<Livro>("O Senhor dos Anéis", 1954, 1));
-    biblioteca.push_back(make_shared<DVD>("Matrix", 1999, 2));
-    biblioteca.push_back(make_shared<AudioLivro>("1984", 1949, 3));
+//-----------------------------------------------------------------------------------------
 
-    for (auto &m : biblioteca) {
-        m->mostrar();  // polimorfismo funcionando
-    }
+    cout << "\nDigite o título do livro:\n";
+    getline(cin, t);
+
+    cout << "\nDigite o ano do livro:\n";
+    cin >> a;
+
+    cout << "\nDigite o id do livro:\n";
+    cin >> id;
+
+    getline(cin,buffer);
+
+    Livro livro(t,a,id);
+    livro.mostrar();
+    livro.ler();
+
+//-----------------------------------------------------------------------------------------
+
+    cout << "\nDigite o título do dvd:\n";
+    getline(cin, t);
+
+    cout << "\nDigite o ano do dvd:\n";
+    cin >> a;
+
+    cout << "\nDigite o id do dvd:\n";
+    cin >> id;
+
+    getline(cin,buffer);
+
+    DVD dvd(t,a,id);
+    dvd.mostrar();
+    dvd.reproduzir();
+
+//-----------------------------------------------------------------------------------
+
+    cout << "\nDigite o título do audiolivro:\n";
+    getline(cin, t);
+
+    cout << "\nDigite o ano do audiolivro:\n";
+    cin >> a;
+
+    cout << "\nDigite o id do audiolivro:\n";
+    cin >> id;
+
+    AudioLivro audiolivro(t,a,id);
+    audiolivro.mostrar();
+    audiolivro.ler();
+    audiolivro.reproduzir();
+
 
     return 0;
 }
